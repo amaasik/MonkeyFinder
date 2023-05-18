@@ -8,7 +8,7 @@ public class MonkeyService
     {
         this.httpClient = new HttpClient();
     }
-    List<Monkey> monkeyList= new();
+    List<Monkey> monkeyList;
     public async Task<List<Monkey>> GetMonkeys()
     {
         if (monkeyList?.Count > 0)
@@ -22,6 +22,6 @@ public class MonkeyService
             monkeyList = await response.Content.ReadFromJsonAsync<List<Monkey>>();
         }
 
-
+        return monkeyList;
     }
 }
