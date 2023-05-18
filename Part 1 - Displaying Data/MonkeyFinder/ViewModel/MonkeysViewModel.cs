@@ -11,6 +11,17 @@ public partial class MonkeysViewModel : BaseViewModel
         Title = "Monkey Finder";
         this.monkeyService = monkeyService;
     }
+    [RelayCommand]
+    async Task GoToDetailsAsync(Monkey monkey)
+    {
+        if (monkey == null)
+            return;
+
+        await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
+        {
+            {"Monkey", monkey }
+        });
+    }
 
     [RelayCommand]
     async Task GetMonkeysAsync()
